@@ -1,3 +1,6 @@
 [submodule "playbooks/roles/jpic.ansible"]
 	path = playbooks/roles/jpic.ansible
 	url = https://github.com/jpic/jpic.ansible.git
+[submodule "playbooks/roles/package"]
+	path = playbooks/roles/package
+	url = https://github.com/GROG/ansible-role-package.git
