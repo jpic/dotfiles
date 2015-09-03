@@ -1,0 +1,9 @@
+---
+
+- hosts: all
+  
+  roles:
+  - role: jpic.ansible
+    ansible_roles:
+      jpic.ansible: https://github.com/jpic/jpic.ansible.git
+    tags: ansible

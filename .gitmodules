@@ -1,0 +1,3 @@
+[submodule "playbooks/roles/jpic.ansible"]
+	path = playbooks/roles/jpic.ansible
+	url = https://github.com/jpic/jpic.ansible.git

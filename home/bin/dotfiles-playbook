@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -ex
+
+playbook="$1"
+shift
+
+host=""
+if [ -n "$1" ]; then
+    remote_user="${1#*@},"
+    host="${1%@*}"
+    shift
+fi
+
+DOTFILES_PATH=${DOTFILES_PATH-/home/$USER/.dotfiles}
+
+if [ -z "$host" ]; then
+    if [ -e "/usr/bin/python2" ]; then
+        ansible-playbook $DOTFILES_PATH/playbooks/${playbook}.yml -i localhost, -c local -e ansible_python_interpreter=/usr/bin/python2 $@
+    else
+        ansible-playbook $DOTFILES_PATH/playbooks/${playbook}.yml -i localhost, -c local $@
+    fi
+else
+    ansible-playbook $DOTFILES_PATH/playbooks/${playbook}.yml -i "$host," -u "$user" $@
+fi
