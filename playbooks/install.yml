@@ -7,6 +7,7 @@
     ansible_roles:
       jpic.ansible: https://github.com/jpic/jpic.ansible.git
       jpic.superadmin: https://github.com/jpic/jpic.superadmin.git
+      package: https://github.com/GROG/ansible-role-package.git
     tags: ansible
 
 - hosts: all
