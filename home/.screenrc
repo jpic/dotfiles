@@ -1,0 +1,6 @@
+escape ^Hh
+termcapinfo rxvt ti@:te@
+termcapinfo rxvt 'hs:ts=E]2;:fs=07:ds=E]2;screen07'
+caption always "%{= kb}[ %{G}%H::$USER %{b}][ %=%{w}%?%-Lw%?%{b}(%{W}%n*%f %t%?(%u)%?%{b})%{w}%?%+Lw%?%?%= %{b}][%{B} %Y.%m.%d %{W}%0c %{b}]"
+sorendition +b kG
+term xterm-256color

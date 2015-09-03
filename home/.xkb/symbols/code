@@ -1,0 +1,25 @@
+// Dvorak variant for polyglot coder
+
+partial alphanumeric_keys
+xkb_symbols "dvorak-intl-code" {
+
+    name[Group1]= "English (Dvorak alternative international no dead keys)";
+
+    include "us(dvorak-alt-intl)"
+
+    key <AE01> { [ exclam, 1 		]	};
+    key <AE02> { [ at, 2		]	};
+    key <AE03> { [ numbersign, 3	]	};
+    key <AE04> { [ dollar, 4, EuroSign		]	};
+    key <AE05> { [ ampersand, 5		]	};
+    key <AE06> { [ braceleft, 6, dead_circumflex, dead_circumflex ]	};
+    key <AE07> { [ braceright, 7	]	};
+    key <AE08> { [ asterisk, 8	]	};
+    key <AE09> { [ parenleft, 9, dead_grave]	};
+    key <AE10> { [ parenright, 0	]	};
+    key <AE11> { [ bracketleft,	asciicircum	]	};
+    key <AE12> { [ bracketright, percent,  dead_tilde] };
+    key <AB01> { [ colon,   semicolon, acircumflex ] };
+
+    include "level3(ralt_switch)"
+};

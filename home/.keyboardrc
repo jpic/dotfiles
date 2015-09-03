@@ -1,0 +1,2 @@
+setxkbmap -I ~/.xkb code -print | xkbcomp -I$HOME/.xkb - $DISPLAY
+xmodmap ~/.speedswapper
