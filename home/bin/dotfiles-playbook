@@ -7,7 +7,7 @@ shift
 
 host=""
 if [ -n "$1" ] && echo "$1" | grep "@"; then
-    host="${1#*@},"
+    host="${1#*@}"
     user="${1%@*}"
     shift
 fi
