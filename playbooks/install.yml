@@ -7,6 +7,7 @@
     ansible_roles:
       jpic.ansible: https://github.com/jpic/jpic.ansible.git
       jpic.superadmin: https://github.com/jpic/jpic.superadmin.git
+      jpic.dotfiles: https://github.com/jpic/jpic.dotfiles.git
       package: https://github.com/GROG/ansible-role-package.git
     tags: ansible
 
@@ -18,3 +19,9 @@
     package_list:
     - name: git
     - name: vim
+
+  - role: jpic.dotfiles
+    dotfiles_url: https://github.com/jpic/new_dotfiles.git
+    dotfiles_path: /home/jpic/.dotfiles
+    dotfiles_home: /home/jpic
+    tags: dotfiles
