@@ -6,4 +6,5 @@
   - role: jpic.ansible
     ansible_roles:
       jpic.ansible: https://github.com/jpic/jpic.ansible.git
+      jpic.superadmin: https://github.com/jpic/jpic.superadmin.git
     tags: ansible

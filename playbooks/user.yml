@@ -1,0 +1,8 @@
+---
+
+- hosts: all
+
+  roles:
+  - role: jpic.superadmin
+    user: jpic
+    home: /home/jpic

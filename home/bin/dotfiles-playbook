@@ -6,7 +6,7 @@ playbook="$1"
 shift
 
 host=""
-if [ -n "$1" ]; then
+if [ -n "$1" ] && echo "$1" | grep "@"; then
     remote_user="${1#*@},"
     host="${1%@*}"
     shift
