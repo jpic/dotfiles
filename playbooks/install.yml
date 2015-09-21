@@ -21,7 +21,7 @@
     - name: vim
 
   - role: jpic.dotfiles
-    dotfiles_url: https://github.com/jpic/new_dotfiles.git
+    dotfiles_url: https://github.com/jpic/dotfiles.git
     dotfiles_path: /home/jpic/.dotfiles
     dotfiles_home: /home/jpic
     tags: dotfiles
