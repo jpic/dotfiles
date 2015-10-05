@@ -34,3 +34,4 @@ let g:pymode_lint_ignore="E501,E128"
 map <C-q> :call DWM_Close()<CR>
 
 set foldmethod=marker
+tnoremap <Esc> <C-\><C-n>
