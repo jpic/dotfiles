@@ -35,3 +35,5 @@ map <C-q> :call DWM_Close()<CR>
 
 set foldmethod=marker
 tnoremap <Esc> <C-\><C-n>
+
+autocmd BufWritePre * :%s/\s\+$//e
