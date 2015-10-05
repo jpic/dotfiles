@@ -25,3 +25,6 @@
      untracked = cyan
 [diff]
 	tool = vimdiff
+[gitreview]
+	scheme = https
+	port = 443
