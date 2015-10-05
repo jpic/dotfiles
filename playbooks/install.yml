@@ -1,7 +1,15 @@
 ---
 
 - hosts: all
+  roles:
+  - role: package
+    become: yes
+    package_list:
+    - name: git
+    - name: vim
+      pacman: gvim
 
+- hosts: all
   roles:
   - role: jpic.ansible
     ansible_roles:
@@ -10,15 +18,6 @@
       jpic.dotfiles: https://github.com/jpic/jpic.dotfiles.git
       package: https://github.com/GROG/ansible-role-package.git
     tags: ansible
-
-- hosts: all
-
-  roles:
-  - role: package
-    become: yes
-    package_list:
-    - name: git
-    - name: vim
 
   - role: jpic.dotfiles
     dotfiles_url: https://github.com/jpic/dotfiles.git
