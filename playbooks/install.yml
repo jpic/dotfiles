@@ -8,6 +8,7 @@
     - name: git
     - name: vim
       pacman: gvim
+    - name: screen
 
 - hosts: all
   roles:
