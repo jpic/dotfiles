@@ -10,6 +10,7 @@ fi
 
 source ~/.keyboardrc
 xsetroot -cursor_name left_ptr &
+feh --bg-scale ~/Pictures/background.jpg &
 xrdb -merge ~/.Xresources &
 pgrep -f xss-lock || xss-lock -- slock
 light -S 14.81 &
@@ -24,6 +25,7 @@ if [ -x /usr/bin/autocutsel ]; then
     #   with the clipboard buffer
     autocutsel -selection PRIMARY -fork
 fi
+wmname LG3D
 
 source ~/.xrandrrc
 
@@ -31,4 +33,4 @@ dwmstatus &
 cbatticon 0 &
 cbatticon 1 &
 nm-applet &
-awesome
+exec ~/py3/bin/python ~/py3/bin/qtile
