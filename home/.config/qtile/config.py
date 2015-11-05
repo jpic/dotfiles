@@ -78,6 +78,10 @@ keys = [
         lazy.layout.zoom()
     ),
 
+    Key([mod], "apostrophe", lazy.to_screen(0)),
+    Key([mod], "comma", lazy.to_screen(1)),
+    Key([mod], "period", lazy.to_screen(2)),
+
     Key([mod], "t", lazy.spawn("termite")),
     Key([mod], "q", lazy.spawn('slock')),
 
