@@ -73,17 +73,22 @@ keys = [
         lazy.layout.next()
     ),
 
-    # Swap panes of split stack
-    Key(
-        [mod, "shift"], "space",
-        lazy.layout.rotate()
-    ),
-
     Key(
         [mod], "Return",
         lazy.layout.zoom()
     ),
+
     Key([mod], "t", lazy.spawn("termite")),
+    Key([mod], "l", lazy.spawn('slock')),
+
+    # click with the keyboard ... perfect with a trackpoint
+    Key([mod], "g", lazy.spawn("xdotool click 1")),
+    Key([mod], "c", lazy.spawn("xdotool click 2")),
+    Key([mod], "r", lazy.spawn("xdotool click 3")),
+
+    # scroll in any window with the same shortcut !
+    Key([mod], "b", lazy.spawn("xdotool click 4")),
+    Key([mod], "m", lazy.spawn("xdotool click 5")),
 
     # Toggle between different layouts as defined below
     Key([mod], "space", lazy.next_layout()),
