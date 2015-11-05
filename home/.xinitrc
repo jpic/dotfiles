@@ -8,7 +8,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 fi
 
 
-source ~/.keyboardrc
+termite &
 xsetroot -cursor_name left_ptr &
 feh --bg-scale ~/Pictures/background.jpg &
 xrdb -merge ~/.Xresources &
@@ -28,8 +28,8 @@ fi
 wmname LG3D
 
 source ~/.xrandrrc
+source ~/.keyboardrc
 
-dwmstatus &
 cbatticon 0 &
 cbatticon 1 &
 nm-applet &
