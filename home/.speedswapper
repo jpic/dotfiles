@@ -1,5 +1,15 @@
-! Swap caps lock and escape
+! bye bye caps locj
 clear Lock
-keycode 66 = Escape Hyper_L
-keycode 107 = Hyper_L
+
+! caps
+keycode 66 = Hyper_L
 add mod4 = Hyper_L
+
+! the weird key i have on the left
+keycode 94 = Escape
+
+! tab
+! keycode 23 = Escape
+
+! printscr
+keycode 107 = Tab
