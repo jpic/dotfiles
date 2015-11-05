@@ -20,7 +20,7 @@ def app_or_group(group, app):
 def dynamic_tag(key, name, cmd, **matches):
     return (key,
         Group(name, persist=False, init=False,
-            matches=matches),
+            matches=[Match(**matches)]),
         cmd)
 
 tag_keys = (
@@ -45,7 +45,7 @@ dynamic_tags = (
     dynamic_tag('u', 'mz', 'lxmusic', title=['LXMusic']),
 )
 
-groups = [j for i, j in tag_keys] + [i[1] for i in dynamic_tags]
+groups = [i[1] for i in tag_keys] + [i[1] for i in dynamic_tags]
 
 keys = [
     # Switch between windows in current stack pane
@@ -95,6 +95,10 @@ keys = [
     Key([mod], "p", lazy.spawncmd()),
 ]
 
+for key, group, cmd in dynamic_tags:
+    keys.append(Key([mod], key, lazy.function(app_or_group(group.name, cmd))))
+    keys.append(Key([mod, "shift"], key, lazy.window.togroup(group.name)))
+
 for key, i in tag_keys:
     # mod1 + letter of group = switch to group
     keys.append(
@@ -105,10 +109,6 @@ for key, i in tag_keys:
     keys.append(
         Key([mod, "shift"], key, lazy.window.togroup(i.name))
     )
-
-for key, group, cmd in dynamic_tags:
-    keys.append(Key([mod], key, app_or_group(group.name, cmd)))
-    keys.append(Key([mod, "shift"], key, lazy.window.togroup(group.name)))
 
 class MyTile(layout.Tile):
     def cmd_zoom(self):
