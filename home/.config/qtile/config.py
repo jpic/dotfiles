@@ -79,7 +79,7 @@ keys = [
     ),
 
     Key([mod], "t", lazy.spawn("termite")),
-    Key([mod], "l", lazy.spawn('slock')),
+    Key([mod], "q", lazy.spawn('slock')),
 
     # click with the keyboard ... perfect with a trackpoint
     Key([mod], "g", lazy.spawn("xdotool click 1")),
