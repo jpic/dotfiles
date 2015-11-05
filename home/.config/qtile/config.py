@@ -9,6 +9,20 @@ logger = logging.getLogger('qtile')
 
 mod = "mod4"
 
+def app_or_group(group, app):
+    def f(qtile):
+        try:
+            qtile.groupMap[group].cmd_toscreen()
+        except KeyError:
+            qtile.cmd_spawn(app)
+    return f
+
+def dynamic_tag(key, name, cmd, **matches):
+    return (key,
+        Group(name, persist=False, init=False,
+            matches=matches),
+        cmd)
+
 tag_keys = (
     ('exclam', Group('1')),
     ('at', Group('2')),
@@ -20,13 +34,18 @@ tag_keys = (
     ('asterisk', Group('8')),
     ('parenleft', Group('9')),
     ('parenright', Group('0')),
-    ('a', Group('ff', persist=False, init=False,
-        matches=[Match(wm_class=['Firefox'])])),
-    ('o', Group('ch', persist=False, init=False)),
-    ('e', Group('mz', persist=False, init=False)),
 )
 
-groups = [j for i, j in tag_keys]
+dynamic_tags = (
+    dynamic_tag('a', 'qt',
+        '/home/jpic/py3/bin/python3 /home/jpic/py3/bin/qutebrowser',
+        wm_class=['qutebrowser']),
+    dynamic_tag('o', 'ff', 'firefox', wm_class=['Firefox']),
+    dynamic_tag('e', 'ch', 'chromium', wm_class=['chromium']),
+    dynamic_tag('u', 'mz', 'lxmusic', title=['LXMusic']),
+)
+
+groups = [j for i, j in tag_keys] + [i[1] for i in dynamic_tags]
 
 keys = [
     # Switch between windows in current stack pane
@@ -86,6 +105,10 @@ for key, i in tag_keys:
     keys.append(
         Key([mod, "shift"], key, lazy.window.togroup(i.name))
     )
+
+for key, group, cmd in dynamic_tags:
+    keys.append(Key([mod], key, app_or_group(group.name, cmd)))
+    keys.append(Key([mod, "shift"], key, lazy.window.togroup(group.name)))
 
 class MyTile(layout.Tile):
     def cmd_zoom(self):
