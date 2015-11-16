@@ -221,9 +221,7 @@ PERL_MB_OPT="--install_base \"/home/jpic/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/jpic/perl5"; export PERL_MM_OPT;
 export PYTHONSTARTUP=~/.pythonrc
 
-alias ansible-playbook-vault='test -e vault-password.txt ||
-    gpg --decrypt-files vault-password.txt.gpg;
-ansible-playbook --vault-password-file vault-password.txt $@'
+source ~/.bashmy
 
 alias s="sudo -sE"
 
