@@ -236,3 +236,6 @@ fi
 
 alias aoeu="setxkbmap fr"
 alias qsdf="source ~/.keyboardrc"
+
+# added by travis gem
+[ -f /home/jpic/.travis/travis.sh ] && source /home/jpic/.travis/travis.sh
