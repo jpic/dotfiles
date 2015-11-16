@@ -7,9 +7,6 @@
 [submodule "home/.vim/bundle/vim-ansible-yaml"]
 	path = home/.vim/bundle/vim-ansible-yaml
 	url = https://github.com/chase/vim-ansible-yaml.git
-[submodule "home/.vim/bundle/vim-pathogen"]
-	path = home/.vim/bundle/vim-pathogen
-	url = https://github.com/tpope/vim-pathogen.git
 [submodule "home/.vim/bundle/jedi-vim"]
 	path = home/.vim/bundle/jedi-vim
 	url = https://github.com/davidhalter/jedi-vim.git
