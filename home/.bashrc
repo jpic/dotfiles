@@ -232,7 +232,6 @@ if [[ -z "$SUDO_USER" ]]; then
     eval `keychain --eval id_rsa --agents ssh`
     eval $(gpg-agent --daemon)
 fi
-. /home/jpic/.nix-profile/etc/profile.d/nix.sh
 
 
 alias aoeu="setxkbmap fr"
