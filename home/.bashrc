@@ -192,6 +192,7 @@ alias gco="git checkout"
 alias gcm="git commit -m"
 alias gpl="git pull"
 alias gps="git push"
+alias gst="git status"
 
 # added by travis gem
 [ -f /home/jpic/.travis/travis.sh ] && source /home/jpic/.travis/travis.sh
