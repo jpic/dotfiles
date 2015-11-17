@@ -373,5 +373,8 @@ statusbar = {
 settings = {
   core = { real_name = "Unknown"; user_name = "jpic"; nick = "jpic"; };
   "fe-text" = { actlist_sort = "refnum"; };
-  "fe-common/core" = { theme = "\003"; hilight_color = "= %R"; };
+  "fe-common/core" = {
+    theme = "solarized-universal";
+    hilight_color = " \"= %R\"";
+  };
 };
