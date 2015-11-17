@@ -75,3 +75,4 @@ filetype plugin indent on    " required
 "
 syntax enable
 colorscheme molokai
+hi Comment ctermfg=blue
