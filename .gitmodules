@@ -4,12 +4,6 @@
 [submodule "playbooks/roles/package"]
 	path = playbooks/roles/package
 	url = https://github.com/GROG/ansible-role-package.git
-[submodule "home/.vim/bundle/vim-ansible-yaml"]
-	path = home/.vim/bundle/vim-ansible-yaml
-	url = https://github.com/chase/vim-ansible-yaml.git
-[submodule "home/.vim/bundle/jedi-vim"]
-	path = home/.vim/bundle/jedi-vim
-	url = https://github.com/davidhalter/jedi-vim.git
 [submodule "home/.bash_it"]
 	path = home/.bash_it
 	url = https://github.com/Bash-it/bash-it.git
