@@ -56,8 +56,6 @@ Plugin 'vim-scripts/LargeFile'
 
 Plugin 'bling/vim-airline'
 
-AirlineTheme dark
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -77,4 +75,8 @@ filetype plugin indent on    " required
 "
 syntax enable
 colorscheme molokai
+
 hi Comment ctermfg=blue
+hi Normal ctermfg=white ctermbg=none
+
+let g:airline_theme="dark"
