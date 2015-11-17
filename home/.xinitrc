@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ -d /etc/X11/xinit/xinitrc.d ]; then
   for f in /etc/X11/xinit/xinitrc.d/*; do
@@ -8,6 +8,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 fi
 
 
+source ~/.keyboardrc
 termite &
 xsetroot -cursor_name left_ptr &
 feh --bg-scale ~/Pictures/background.jpg &
@@ -25,12 +26,11 @@ if [ -x /usr/bin/autocutsel ]; then
     #   with the clipboard buffer
     autocutsel -selection PRIMARY -fork
 fi
-wmname LG3D
-
-source ~/.xrandrrc
-source ~/.keyboardrc
+wmname LG3D &
+source ~/.xrandrrc &
 
 cbatticon 0 &
 cbatticon 1 &
 nm-applet &
-exec ~/py3/bin/python ~/py3/bin/qtile
+dwmstatus &
+exec ~/bin/dwm
