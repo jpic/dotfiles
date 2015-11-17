@@ -221,8 +221,6 @@ PERL_MB_OPT="--install_base \"/home/jpic/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/jpic/perl5"; export PERL_MM_OPT;
 export PYTHONSTARTUP=~/.pythonrc
 
-source ~/.bashmy
-
 alias s="sudo -sE"
 
 type nvim &> /dev/null && alias vim="nvim" && alias vi="nvim"
