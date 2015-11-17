@@ -1,35 +1,3 @@
-[options]
-scroll_on_output = false
-scroll_on_keystroke = true
-audible_bell = false
-mouse_autohide = false
-allow_bold = true
-dynamic_title = true
-urgent_on_bell = true
-clickable_url = true
-#font = Liberation Mono for Powerline 9
-#font = Anonymous Pro for Powerline 11
-font = Hack Regular 10
-scrollback_lines = 100000
-search_wrap = true
-#icon_name = terminal
-#geometry = 640x480
-
-# "system", "on" or "off"
-cursor_blink = system
-
-# "block", "underline" or "ibeam"
-cursor_shape = block
-
-# $BROWSER is used by default
-browser = firefox
-
-# set size hints for the window
-#size_hints = false
-
-# emit escape sequences for other keys modified by Control
-#modify_other_keys = false
-
 [colors]
 #cursor = #dcdccc
 # 20% background transparency (requires a compositor)
@@ -80,10 +48,31 @@ color15 = #fdf6e3
 
 foreground = #839496
 foreground_bold = #839496
-background = #002b36
+#background = #002b36
+background = #000000
+
+
+# molokai
+
+color0=    #1B1D1E
+color1=    #FF0044
+color2=    #82B414
+color3=    #FD971F
+color4=    #266C98
+color5=    #AC0CB1
+color6=    #AE81FF
+color7=    #CCCCCC
+color8=    #808080
+color9=    #F92672
+color10=   #A6E22E
+color11=   #E6DB74
+color12=   #7070F0
+color13=   #D63AE1
+color14=   #66D9EF
+color15=   #F8F8F2
+
 
 [hints]
-#font = Monospace 12
 #foreground = #dcdccc
 #background = #3f3f3f
 #active_foreground = #e68080
@@ -94,3 +83,34 @@ background = #002b36
 #roundness = 2.0
 
 # vim: ft=dosini cms=#%s
+
+[options]
+scroll_on_output = false
+scroll_on_keystroke = true
+audible_bell = false
+mouse_autohide = false
+allow_bold = true
+dynamic_title = true
+urgent_on_bell = true
+clickable_url = true
+font = Hack 10
+scrollback_lines = 100000
+search_wrap = true
+#icon_name = terminal
+#geometry = 640x480
+
+# "system", "on" or "off"
+cursor_blink = system
+
+# "block", "underline" or "ibeam"
+cursor_shape = block
+
+# $BROWSER is used by default
+browser = firefox
+
+# set size hints for the window
+#size_hints = false
+
+# emit escape sequences for other keys modified by Control
+#modify_other_keys = false
+

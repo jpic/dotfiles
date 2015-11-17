@@ -42,7 +42,7 @@ Plugin 'VundleVim/Vundle.vim'
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
 
-Plugin 'blueyed/vim-colors-solarized', {'name': 'vim-colors-solarized'}
+Plugin 'tomasr/molokai'
 
 Plugin 'davidhalter/jedi-vim'
 
@@ -74,6 +74,4 @@ filetype plugin indent on    " required
 "
 "
 syntax enable
-set background=dark
-let g:solarized_termcolors=16
-colorscheme solarized
+colorscheme molokai

@@ -7,6 +7,3 @@
 [submodule "home/.vim/bundle/Vundle.vim"]
 	path = home/.vim/bundle/Vundle.vim
 	url = https://github.com/VundleVim/Vundle.vim.git
-[submodule "home/.irssi/irssi-colors-solarized"]
-	path = home/.irssi/irssi-colors-solarized
-	url = https://github.com/huyz/irssi-colors-solarized.git
