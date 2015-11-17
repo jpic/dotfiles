@@ -186,5 +186,12 @@ fi
 alias aoeu="setxkbmap fr"
 alias qsdf="source ~/.keyboardrc"
 
+alias gap="git add -p"
+alias gcl="git clone"
+alias gco="git checkout"
+alias gcm="git commit -m"
+alias gpl="git pull"
+alias gps="git push"
+
 # added by travis gem
 [ -f /home/jpic/.travis/travis.sh ] && source /home/jpic/.travis/travis.sh
