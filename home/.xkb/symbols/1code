@@ -1,0 +1,34 @@
+// Dvorak variant for polyglot coder
+
+partial alphanumeric_keys
+xkb_symbols "dvorak-l-intel-code" {
+
+    name[Group1]= "English (left handed Dvorak)";
+
+    include "us(dvorak-l)"
+
+    // For programers
+    key <AE12> { [ exclam, 1, exclamdown		]	};
+    key <AE11> { [ at, 2		]	};
+    key <AE10> { [ numbersign, 3	]	};
+    key <AE09> { [ dollar, 4, EuroSign		]	};
+    key <AD11> { [ percent, 5		]	};
+    key <AD10> { [ dead_circumflex, 6 ]	};
+    key <AC11> { [ ampersand, 7	]	};
+    key <AC10> { [ asterisk, 8	]	};
+    key <AB10> { [ parenleft, 9, dead_grave]	};
+    key <AB09> { [ parenright, 0	]	};
+
+    // For vim users
+    key <AD01> {	[   colon,	semicolon 		]	};
+
+    // For frenglish speakers
+    key <AC03> {	[	    c,	C, ccedilla, Ccedilla		]	};
+    key <AC08> {	[	    a,	A, aacute, Aacute 		]	};
+    key <AC07> {	[	    e,	E, eacute, Eacute		]	};
+    key <AD05> {	[	    u,	U, uacute, Uacute 		]	};
+    key <AD07> {	[	    s,	S, egrave		]	};
+    key <AC06> {	[	    h,	H, ecircumflex	]	};
+
+    include "level3(ralt_switch)"
+};
