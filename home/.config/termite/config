@@ -54,6 +54,8 @@ background = #000000
 
 # molokai
 
+foreground = #ffffff
+foreground_bold = #ffffff
 color0=    #1B1D1E
 color1=    #FF0044
 color2=    #82B414
