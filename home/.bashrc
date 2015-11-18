@@ -194,6 +194,7 @@ alias gpl="git pull"
 alias gps="git push"
 alias gst="git status"
 alias gcp="git cherry-pick"
+alias gri="git rebase -i"
 
 # added by travis gem
 [ -f /home/jpic/.travis/travis.sh ] && source /home/jpic/.travis/travis.sh
