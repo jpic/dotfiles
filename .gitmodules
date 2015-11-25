@@ -10,3 +10,6 @@
 [submodule "jpic.dotfiles"]
 	path = playbooks/roles/jpic.dotfiles
 	url = https://github.com/jpic/jpic.dotfiles.git
+[submodule "playbooks/roles/jpic.superadmin"]
+	path = playbooks/roles/jpic.superadmin
+	url = https://github.com/jpic/jpic.superadmin.git
