@@ -197,6 +197,7 @@ alias gcp="git cherry-pick"
 alias gri="git rebase -i"
 alias gdc="git diff --cached"
 alias grc="git rebase --continue"
+alias gca="git commit --amend"
 function ggc() {
     git clone git@github.com:${1}.git
     pushd $1
