@@ -1,4 +1,3 @@
-filetype plugin indent on
 syntax on
 
 nmap <C-c> :set invpaste<CR>
