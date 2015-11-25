@@ -13,6 +13,8 @@ set ai                  " Always set auto-indenting on
 set history=150
 set ruler               " Show the cursor position all the time
 set number
+" disable mouse once and for all
+set mouse=
 
 let g:pymode_lint_ignore="E501,E128"
 
