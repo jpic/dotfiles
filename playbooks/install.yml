@@ -9,6 +9,7 @@
     - name: vim
       pacman: neovim
     - name: screen
+    - name: most
 
 - hosts: all
   roles:
