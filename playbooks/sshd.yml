@@ -1,0 +1,16 @@
+---
+
+- hosts: all
+  tasks:
+  - name: Run on port 2222
+    lineinfile:
+      dest: /etc/ssh/sshd_config
+      regexp: #?Port 22$
+      line: Port 2222
+    notify: Restart sshd
+
+  handlers:
+  - name: Restart sshd
+    service:
+      name: sshd
+      state: restarted
