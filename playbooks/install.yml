@@ -4,6 +4,7 @@
   roles:
   - role: package
     become: yes
+    package_update_cache: true
     package_list:
     - name: git
     - name: vim
