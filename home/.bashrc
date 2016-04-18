@@ -159,13 +159,14 @@ function marks {
 
 eval "$(rbenv init -)"
 
-export PATH=$HOME/bin:$HOME/.bin:/usr/lib/node_modules/:$PATH
+export GOPATH=~/go
+export PATH=$PATH:$HOME/bin:$HOME/.bin:/usr/lib/node_modules/:$GOPATH/bin
 
 source $HOME/env/bin/activate
 
 alias msfconsole="ruby-1.9 $HOME/sploits/metasploit-framework/msfconsole --quiet -x \"db_connect ${USER}@msf\""
 
-PATH="/home/jpic/perl5/bin${PATH+:}/home/jpic/.gem/ruby/2.2.0/bin${PATH+:}${PATH}"; export PATH;
+PATH="/home/jpic/perl5/bin${PATH+:}/home/jpic/.gem/ruby/2.3.0/bin${PATH+:}/home/jpic/.gem/ruby/2.2.0/bin${PATH+:}${PATH}"; export PATH;
 PERL5LIB="/home/jpic/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/jpic/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/jpic/perl5\""; export PERL_MB_OPT;
@@ -174,13 +175,10 @@ export PYTHONSTARTUP=~/.pythonrc
 
 alias s="sudo -sE"
 
-type nvim &> /dev/null && alias vim="nvim" && alias vi="nvim"
+GPG_TTY=$(tty)
+export GPG_TTY
 
-if [[ -z "$SUDO_USER" ]]; then
-    export GPG_TTY=$(tty)
-    eval `keychain --eval id_rsa --agents ssh`
-    eval $(gpg-agent --daemon)
-fi
+type nvim &> /dev/null && alias vim="nvim" && alias vi="nvim"
 
 
 alias aoeu="setxkbmap fr"
@@ -205,3 +203,16 @@ function ggc() {
 
 # added by travis gem
 [ -f /home/jpic/.travis/travis.sh ] && source /home/jpic/.travis/travis.sh
+
+if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+    exec startx
+elif [[ -z "$SUDO_USER" ]]; then
+    export GPG_TTY=$(tty)
+    eval `keychain --eval id_rsa --agents ssh`
+    eval $(gpg-agent --daemon)
+fi
+
+#export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+

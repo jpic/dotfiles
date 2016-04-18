@@ -13,3 +13,9 @@
 [submodule "playbooks/roles/jpic.superadmin"]
 	path = playbooks/roles/jpic.superadmin
 	url = https://github.com/jpic/jpic.superadmin.git
+[submodule "playbooks/roles/jpic.iptables"]
+	path = playbooks/roles/jpic.iptables
+	url = https://github.com/jpic/jpic.iptables
+[submodule "playbooks/roles/jpic.lxc"]
+	path = playbooks/roles/jpic.lxc
+	url = https://github.com/jpic/jpic.lxc.git

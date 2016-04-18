@@ -28,3 +28,4 @@
 [gitreview]
 	scheme = https
 	port = 443
+	username = jpic

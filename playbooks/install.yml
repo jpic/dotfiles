@@ -8,7 +8,6 @@
     package_list:
     - name: git
     - name: vim
-      pacman: neovim
     - name: screen
     - name: most
 

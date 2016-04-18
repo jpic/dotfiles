@@ -13,7 +13,6 @@ termite &
 xsetroot -cursor_name left_ptr &
 feh --bg-scale ~/Pictures/background.jpg &
 xrdb -merge ~/.Xresources &
-pgrep -f xss-lock || xss-lock -- slock
 light -S 14.81 &
 redshift-gtk &
 
@@ -29,8 +28,8 @@ fi
 wmname LG3D &
 source ~/.xrandrrc &
 
+dwmstatus &
 cbatticon 0 &
 cbatticon 1 &
 nm-applet &
-dwmstatus &
-exec ~/bin/dwm
+while true; do ~/bin/dwm; done

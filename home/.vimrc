@@ -47,15 +47,15 @@ Plugin 'tomasr/molokai'
 
 Plugin 'davidhalter/jedi-vim'
 
-Plugin 'chase/vim-ansible-yaml'
-            \ , {'autoload': {'filetypes': ['yaml', 'ansible']} }
+Plugin 'pearofducks/vim-ansible'
+            \ , {'autoload': {'filetypes': ['yaml', 'yml', 'ansible']} }
 
 Plugin 'chrisbra/sudoedit.vim', {
             \ 'autoload': {'commands': ['SudoWrite', 'SudoRead']} }
 
 Plugin 'vim-scripts/LargeFile'
 
-Plugin 'bling/vim-airline'
+" Plugin 'bling/vim-airline'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
