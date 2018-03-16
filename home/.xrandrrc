@@ -1,13 +1,1 @@
-set -x
 
-xrandr | grep ^DP1.connected && has_dp1=1
-xrandr | grep ^DP2.connected && has_dp2=2
-
-if [[ -n "$has_dp1" ]] && [[ -n "$has_dp2" ]]; then
-    xrandr --output DP1 --auto --right-of eDP1
-    xrandr --output DP2 --auto --right-of DP1
-elif [[ -n "$has_dp1" ]]; then
-    xrandr --output DP1 --auto --right-of eDP1
-elif [[ -n "$has_dp2" ]]; then
-    xrandr --output DP2 --auto --right-of eDP1
-fi

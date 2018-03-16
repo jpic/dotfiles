@@ -17,12 +17,6 @@ def app_or_group(group, app):
             qtile.cmd_spawn(app)
     return f
 
-def dynamic_tag(key, name, cmd, **matches):
-    return (key,
-        Group(name, persist=False, init=False,
-            matches=[Match(**matches)]),
-        cmd)
-
 tag_keys = (
     ('exclam', Group('1')),
     ('at', Group('2')),
@@ -34,18 +28,13 @@ tag_keys = (
     ('asterisk', Group('8')),
     ('parenleft', Group('9')),
     ('parenright', Group('0')),
+    ('a', Group('a')),
+    ('o', Group('o')),
+    ('e', Group('e')),
+    ('u', Group('u')),
 )
 
-dynamic_tags = (
-    dynamic_tag('a', 'qt',
-        '/home/jpic/py3/bin/python3 /home/jpic/py3/bin/qutebrowser',
-        wm_class=['qutebrowser']),
-    dynamic_tag('o', 'ff', 'firefox', wm_class=['Firefox']),
-    dynamic_tag('e', 'ch', 'chromium', wm_class=['chromium']),
-    dynamic_tag('u', 'mz', 'lxmusic', title=['LXMusic']),
-)
-
-groups = [i[1] for i in tag_keys] + [i[1] for i in dynamic_tags]
+groups = [i[1] for i in tag_keys]
 
 keys = [
     # Switch between windows in current stack pane
@@ -60,11 +49,11 @@ keys = [
     # Move windows up or down in current stack
     Key(
         [mod], "h",
-        lazy.layout.decrease_ratio()
+        lazy.layout.shrink()
     ),
     Key(
         [mod], "l",
-        lazy.layout.increase_ratio()
+        lazy.layout.grow()
     ),
 
     # Switch window focus to other pane(s) of stack
@@ -75,12 +64,12 @@ keys = [
 
     Key(
         [mod], "Return",
-        lazy.layout.zoom()
+        lazy.layout.shuffle_up()
     ),
 
-    Key([mod], "apostrophe", lazy.to_screen(0)),
+    Key([mod], "apostrophe", lazy.to_screen(2)),
     Key([mod], "comma", lazy.to_screen(1)),
-    Key([mod], "period", lazy.to_screen(2)),
+    Key([mod], "period", lazy.to_screen(0)),
 
     Key([mod], "t", lazy.spawn("termite")),
     Key([mod], "q", lazy.spawn('slock')),
@@ -103,10 +92,6 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown()),
     Key([mod], "p", lazy.spawncmd()),
 ]
-
-for key, group, cmd in dynamic_tags:
-    keys.append(Key([mod], key, lazy.function(app_or_group(group.name, cmd))))
-    keys.append(Key([mod, "shift"], key, lazy.window.togroup(group.name)))
 
 for key, i in tag_keys:
     # mod1 + letter of group = switch to group
@@ -142,14 +127,15 @@ class MyTile(layout.Tile):
         self.group.layoutAll(True)
 
 layouts = [
-    MyTile(),
+    layout.MonadTall(),
     layout.Max(),
 ]
 
 widget_defaults = dict(
-    font='Deja Vu',
-    fontsize=16,
-    padding=3,
+    font='Hack',
+    fontsize=12,
+    padding=2,
+    border_width=1,
 )
 
 screens = [
@@ -159,8 +145,15 @@ screens = [
                 widget.GroupBox(),
                 widget.Prompt(),
                 widget.WindowName(),
+                widget.Net(),
                 widget.Memory(),
+                widget.MemoryGraph(border_width=1),
+                widget.CPUGraph(border_width=1, graph_color='ff00e9', border_color='ff00e9', fill_color='792a72'),
+                widget.HDDBusyGraph(border_width=1, graph_color='6aff00', border_color='6aff00', fill_color='619d37'),
                 widget.Volume(),
+                widget.Notify(),
+                widget.BatteryIcon(),
+                widget.BatteryIcon(battery_name='BAT1'),
                 widget.Systray(),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
             ],

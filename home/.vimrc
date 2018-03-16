@@ -81,3 +81,10 @@ hi Comment ctermfg=blue
 hi Normal ctermfg=white ctermbg=none
 
 let g:airline_theme="dark"
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set ai                  " Always set auto-indenting on
+set history=150
+set ruler               " Show the cursor position all the time
+set number

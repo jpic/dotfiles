@@ -1,3 +1,7 @@
+Install from scratch
+====================
+
+
 Install
 =======
 

@@ -2,6 +2,10 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+
+echo 250 | sudo tee /sys/devices/platform/i8042/serio1/serio2/sensitivity &
+echo 250 | sudo tee /sys/devices/platform/i8042/serio1/serio2/speed &
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -143,6 +147,11 @@ export PAGER="most"
 export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 export EDITOR=vim
 
+if hash nvim; then
+    alias vim=nvim
+    export EDITOR=nvim
+fi
+
 export MARKPATH=$HOME/.marks
 function jump {
     cd -P $MARKPATH/$1 2>/dev/null || echo "No such mark: $1"
@@ -160,7 +169,7 @@ function marks {
 eval "$(rbenv init -)"
 
 export GOPATH=~/go
-export PATH=$PATH:$HOME/bin:$HOME/.bin:/usr/lib/node_modules/:$GOPATH/bin
+export PATH=$PATH:$HOME/bin:$HOME/.local/bin/:$HOME/.bin:/usr/lib/node_modules/:$GOPATH/bin
 
 source $HOME/env/bin/activate
 
@@ -205,7 +214,9 @@ function ggc() {
 [ -f /home/jpic/.travis/travis.sh ] && source /home/jpic/.travis/travis.sh
 
 if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-    exec startx
+    echo exec startx
+elif [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then
+  XDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session
 elif [[ -z "$SUDO_USER" ]]; then
     export GPG_TTY=$(tty)
     eval `keychain --eval id_rsa --agents ssh`

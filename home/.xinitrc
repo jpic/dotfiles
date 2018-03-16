@@ -26,10 +26,10 @@ if [ -x /usr/bin/autocutsel ]; then
     autocutsel -selection PRIMARY -fork
 fi
 wmname LG3D &
-source ~/.xrandrrc &
-
-dwmstatus &
-cbatticon 0 &
-cbatticon 1 &
+source .screenlayout/quad.sh &
+exec qtile
+#go-dwmstatus &
+#cbatticon 0 &
+#cbatticon 1 &
 nm-applet &
-while true; do ~/bin/dwm; done
+#while true; do ~/bin/dwm; done

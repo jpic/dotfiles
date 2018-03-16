@@ -3,7 +3,7 @@
 partial alphanumeric_keys
 xkb_symbols "dvorak-l-intel-code" {
 
-    name[Group1]= "English (left handed Dvorak)";
+    name[Group1]= "English (left handed Dvorak, haxor variant)";
 
     include "us(dvorak-l)"
 

@@ -5,6 +5,7 @@
     autocrlf = input
     excludesfile = /home/jpic/.gitignore_global
     editor = /usr/bin/vim
+	quotepath = false
 [http]
     sslVerify = false
 
