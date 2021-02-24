@@ -1,21 +1,14 @@
 import logging
+import os
 import subprocess
 
 from libqtile.config import Key, Screen, Group, Drag, Click, Match
 from libqtile.command import lazy
-from libqtile import layout, bar, widget
+from libqtile import layout, bar, hook, widget
 
 logger = logging.getLogger('qtile')
 
 mod = "mod4"
-
-def app_or_group(group, app):
-    def f(qtile):
-        try:
-            qtile.groupMap[group].cmd_toscreen()
-        except KeyError:
-            qtile.cmd_spawn(app)
-    return f
 
 tag_keys = (
     ('exclam', Group('1')),
@@ -67,16 +60,30 @@ keys = [
         lazy.layout.shuffle_up()
     ),
 
-    Key([mod], "apostrophe", lazy.to_screen(2)),
-    Key([mod], "comma", lazy.to_screen(1)),
-    Key([mod], "period", lazy.to_screen(0)),
+    Key(
+        [mod], "apostrophe",
+        lazy.to_screen(0),
+        lazy.spawn('xdotool mousemove 960 540'),
+    ),
+    Key(
+        [mod], "comma",
+        lazy.to_screen(1),
+        lazy.spawn('xdotool mousemove 2800 540'),
+    ),
+    Key(
+        [mod], "period",
+        lazy.to_screen(2),
+        lazy.spawn('xdotool mousemove 4800 540'),
+    ),
 
     Key([mod], "t", lazy.spawn("termite")),
+    Key([mod, "control"], "t", lazy.spawn("cool-retro-term -p newjames")),
     Key([mod], "q", lazy.spawn('slock')),
+    Key([mod], "v", lazy.spawn('scrot -select')),
 
     # click with the keyboard ... perfect with a trackpoint
     Key([mod], "g", lazy.spawn("xdotool click 1")),
-    Key([mod], "c", lazy.spawn("xdotool click 2")),
+    #Key([mod], "c", lazy.spawn("xdotool click 2")),
     Key([mod], "r", lazy.spawn("xdotool click 3")),
 
     # scroll in any window with the same shortcut !
@@ -86,11 +93,18 @@ keys = [
     # Toggle between different layouts as defined below
     Key([mod], "space", lazy.next_layout()),
     Key([mod], "Tab", lazy.screen.togglegroup()),
-    Key([mod, "shift"], "c", lazy.window.kill()),
-
+    Key([mod, "control"], "c", lazy.window.kill()),
     Key([mod, "control"], "r", lazy.restart()),
     Key([mod, "control"], "q", lazy.shutdown()),
-    Key([mod], "p", lazy.spawncmd()),
+    #Key([mod], "p", lazy.spawncmd()),
+    Key([mod], "p", lazy.spawn("rofi -show run")),
+    Key([mod], "w", lazy.spawn("rofi -show window")),
+    Key([mod], "s", lazy.spawn("rofi -show ssh")),
+
+    Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -c 0 sset Master 1- unmute")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -c 0 sset Master 1+ unmute")),
+
 ]
 
 for key, i in tag_keys:
@@ -129,6 +143,7 @@ class MyTile(layout.Tile):
 layouts = [
     layout.MonadTall(),
     layout.Max(),
+    layout.Floating(),
 ]
 
 widget_defaults = dict(
@@ -152,7 +167,7 @@ screens = [
                 widget.HDDBusyGraph(border_width=1, graph_color='6aff00', border_color='6aff00', fill_color='619d37'),
                 widget.Volume(),
                 widget.Notify(),
-                widget.BatteryIcon(),
+                widget.BatteryIcon(battery_name='BAT0'),
                 widget.BatteryIcon(battery_name='BAT1'),
                 widget.Systray(),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
@@ -190,3 +205,8 @@ auto_fullscreen = True
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
+
+
+
+# Gnome hack
+# import qtile_gnome
