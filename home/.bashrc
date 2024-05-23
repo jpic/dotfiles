@@ -2,9 +2,12 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+#echo 250 | sudo tee /sys/devices/platform/i8042/serio1/serio2/sensitivity &> /dev/null &
+#echo 250 | sudo tee /sys/devices/platform/i8042/serio1/serio2/speed &> /dev/null &
 
-echo 250 | sudo tee /sys/devices/platform/i8042/serio1/serio2/sensitivity &
-echo 250 | sudo tee /sys/devices/platform/i8042/serio1/serio2/speed &
+export PATH=$PATH:$HOME/.emacs.d/bin:$HOME/.local/bin:$PATH
+export NODE_PATH=$HOME/.local/lib/node_modules:$NODE_PATH
+export npm_config_prefix=$HOME/.local
 
 # If not running interactively, don't do anything
 case $- in
@@ -102,6 +105,8 @@ LIGHT_GREEN="\[\033[1;32m\]"
       WHITE="\[\033[1;37m\]"
  LIGHT_GRAY="\[\033[0;37m\]"
  COLOR_NONE="\[\e[0m\]"
+ #PURPLE="\[\033[0;57;40m\]"
+PURPLE="\e[38;5;171m"
 
 # Return the prompt symbol to use, colorized based on the return value of the
 # previous command.
@@ -136,21 +141,17 @@ function set_bash_prompt () {
   BRANCH=$(__git_ps1 " (%s)")
   # Set the bash prompt variable.
   PS1="
-${PYTHON_VIRTUALENV}$(date +'%d/%m %Y %H:%M:%S') ${GREEN}\u@\h ${YELLOW}\w${COLOR_NONE} ${BRANCH}
+${PYTHON_VIRTUALENV}$(date +'%d/%m %Y %H:%M:%S') ${PURPLE}\u@\h ${YELLOW}\w${COLOR_NONE} ${BRANCH}
 ${PROMPT_SYMBOL} "
 }
 
 # Tell bash to execute this function just before displaying its prompt.
 PROMPT_COMMAND=set_bash_prompt
+PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
 export PAGER="most"
-export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+#export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 export EDITOR=vim
-
-if hash nvim; then
-    alias vim=nvim
-    export EDITOR=nvim
-fi
 
 export MARKPATH=$HOME/.marks
 function jump {
@@ -166,12 +167,8 @@ function marks {
     ls -l $MARKPATH | sed 's/  / /g' | cut -d' ' -f9- | sed 's/ -/\t-/g' && echo
 }
 
-eval "$(rbenv init -)"
-
 export GOPATH=~/go
 export PATH=$PATH:$HOME/bin:$HOME/.local/bin/:$HOME/.bin:/usr/lib/node_modules/:$GOPATH/bin
-
-source $HOME/env/bin/activate
 
 alias msfconsole="ruby-1.9 $HOME/sploits/metasploit-framework/msfconsole --quiet -x \"db_connect ${USER}@msf\""
 
@@ -187,11 +184,9 @@ alias s="sudo -sE"
 GPG_TTY=$(tty)
 export GPG_TTY
 
-type nvim &> /dev/null && alias vim="nvim" && alias vi="nvim"
-
-
 alias aoeu="setxkbmap fr"
 alias qsdf="source ~/.keyboardrc"
+alias asdf="source ~/.keyboardrc"
 
 alias gap="git add -p"
 alias gcl="git clone"
@@ -216,14 +211,42 @@ function ggc() {
 if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
     echo exec startx
 elif [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ -z $XDG_SESSION_TYPE ]]; then
-  XDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session
+    XDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session
 elif [[ -z "$SUDO_USER" ]]; then
     export GPG_TTY=$(tty)
-    eval `keychain --eval id_rsa --agents ssh`
-    eval $(gpg-agent --daemon)
+    #eval `keychain --eval id_rsa --agents ssh`
+    #eval $(gpg-agent --daemon)
 fi
 
 #export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
+export HUSKY_SKIP_HOOKS=1
+
+export PATH="$HOME/.cargo/bin/:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+alias hpscan="hp-scan -d 'hpaio:/net/HP_Color_LaserJet_MFP_M277dw?ip=172.24.100.16' -a0,0,500,500"
+
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+alias pacman="sudo pacman"
+export PIPENV_VENV_IN_PROJECT=1
+
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias ip='ip -color=auto'
+alias colors='(x=`tput op` y=`printf %76s`;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;done)'
+
+alias badssh="ssh -oStrictHostKeyChecking=no"
+
+
+emac() {
+    emacsclient -nw $@
+}
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh

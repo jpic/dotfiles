@@ -94,8 +94,8 @@ allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
-font = Hack 8
-scrollback_lines = 100000
+font = Hack 15
+scrollback_lines = 1000000
 search_wrap = true
 #icon_name = terminal
 #geometry = 640x480
@@ -107,7 +107,7 @@ cursor_blink = system
 cursor_shape = block
 
 # $BROWSER is used by default
-browser = firefox
+browser = qutebrowser
 
 # set size hints for the window
 #size_hints = false

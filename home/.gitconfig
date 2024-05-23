@@ -1,5 +1,5 @@
 [user]
-    email = jamespic@gmail.com
+    email = jpic@yourlabs.org
     name = jpic
 [core]
     autocrlf = input
@@ -30,3 +30,12 @@
 	scheme = https
 	port = 443
 	username = jpic
+[init]
+	defaultBranch = master
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[credential]
+    helper = store --file ~/.git-credentials

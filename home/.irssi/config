@@ -1,10 +1,42 @@
 servers = (
   {
-    address = "irc.freenode.net";
+    address = "chat.freenode.net";
     chatnet = "Freenode";
+    port = "6697";
+    use_tls = "yes";
+    tls_verify = "yes";
+    autoconnect = "yes";
+  },
+  {
+    address = "irc.oftc.net";
+    chatnet = "oftc";
     port = "6667";
-    use_ssl = "no";
-    ssl_verify = "no";
+    use_tls = "no";
+    tls_verify = "no";
+    autoconnect = "yes";
+  },
+  {
+    address = "irc.darkscience.net";
+    chatnet = "darkscience";
+    port = "6697";
+    use_tls = "yes";
+    tls_verify = "no";
+    autoconnect = "yes";
+  },
+  {
+    address = "irc.epiknet.org";
+    chatnet = "epiknet";
+    port = "6697";
+    use_tls = "yes";
+    tls_verify = "yes";
+    autoconnect = "yes";
+  },
+  {
+    address = "irc.libera.chat";
+    chatnet = "liberachat";
+    port = "6697";
+    use_tls = "yes";
+    tls_verify = "yes";
     autoconnect = "yes";
   }
 );
@@ -13,20 +45,64 @@ chatnets = {
   Freenode = {
     type = "IRC";
     nick = "is_null";
-    realname = "jpic";
+    realname = "is_null";
     usermode = "+iw";
     max_kicks = "1";
     max_msgs = "4";
     max_whois = "1";
+    sasl_mechanism = "PLAIN";
+    sasl_username = "is_null";
+    sasl_password = "Lee8xipofi6ooH5";
+  };
+  darkscience = { type = "IRC"; };
+  oftc = { type = "IRC"; };
+  epiknet = {
+    nick = "airbus1337";
+    realname = "airbus1337";
+    type = "IRC";
+    sasl_mechanism = "PLAIN";
+    sasl_username = "airbus1337";
+    sasl_password = "Yoh5zaesh7faiG6zeechipee8thioghi";
+  };
+  liberachat = {
+    type = "IRC";
+    sasl_mechanism = "PLAIN";
+    sasl_username = "is_null";
+    sasl_password = "Lee8xipofi6ooH5";
   };
 };
 
 channels = (
-  { name = "#asid"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#novasalt"; chatnet = "Freenode"; autojoin = "Yes"; },
+  { name = "#online"; chatnet = "Online"; autojoin = "Yes"; },
   { name = "#neoskills"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#yourlabs"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#lqdn-memopol"; chatnet = "Freenode"; autojoin = "Yes"; }
+  { name = "#linux"; chatnet = "Freenode"; autojoin = "Yes"; },
+  { name = "#qtile"; chatnet = "oftc"; autojoin = "yes"; },
+  { name = "#suckless"; chatnet = "oftc"; autojoin = "yes"; },
+  { name = "#openstack-kolla"; chatnet = "oftc"; autojoin = "yes"; },
+  { name = "#python"; chatnet = "liberachat"; autojoin = "yes"; },
+  { name = "#Musique"; chatnet = "epiknet"; autojoin = "yes"; },
+  { name = "#35+ans"; chatnet = "epiknet"; autojoin = "yes"; },
+  { name = "#Dialogues"; chatnet = "epiknet"; autojoin = "yes"; },
+  { name = "#Rencontres"; chatnet = "epiknet"; autojoin = "yes"; },
+  { name = "#Charme"; chatnet = "epiknet"; autojoin = "yes"; }
+  { name = "#archlinux"; chatnet = "epiknet"; autojoin = "yes"; }
+  { name = "#epiknet"; chatnet = "epiknet"; autojoin = "yes"; }
+  { name = "#informatique"; chatnet = "epiknet"; autojoin = "yes"; }
+  { name = "#irpg"; chatnet = "epiknet"; autojoin = "yes"; }
+  { name = "#ciboulette"; chatnet = "epiknet"; autojoin = "yes"; }
+  { name = "#bavardages"; chatnet = "epiknet"; autojoin = "yes"; }
+  { name = "#les-mathematiques"; chatnet = "epiknet"; autojoin = "yes"; }
+  { name = "#silicium"; chatnet = "epiknet"; autojoin = "yes"; }
+  { name = "#sciences"; chatnet = "epiknet"; autojoin = "yes"; }
+  { name = "#olympe"; chatnet = "epiknet"; autojoin = "yes"; }
+  { name = "#programmation"; chatnet = "epiknet"; autojoin = "yes"; }
+  { name = "#linux"; chatnet = "epiknet"; autojoin = "yes"; }
+  { name = "#archlinux"; chatnet = "epiknet"; autojoin = "yes"; }
+  { name = "#apero"; chatnet = "epiknet"; autojoin = "yes"; }
+  { name = "#jeux"; chatnet = "epiknet"; autojoin = "yes"; }
+  { name = "#hotline"; chatnet = "epiknet"; autojoin = "yes"; }
+  { name = "#sexe"; chatnet = "epiknet"; autojoin = "yes"; }
 );
 
 aliases = {
@@ -286,3 +362,7 @@ settings = {
   "fe-text" = { actlist_sort = "refnum"; };
   "fe-common/core" = { theme = "molokai"; hilight_color = " \"= %R\""; };
 };
+ignores = (
+  { mask = "MODES"; level = "JOINS PARTS QUITS"; },
+  { level = "JOINS PARTS QUITS MODES"; }
+);

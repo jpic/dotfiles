@@ -5,11 +5,22 @@ clear Lock
 keycode 66 = Hyper_L
 add mod4 = Hyper_L
 
-! the weird key i have on the left
-keycode 94 = Escape
+! thinkpad: the weird key i have on the left
+! keycode 94 = Escape
 
 ! tab
 ! keycode 23 = Escape
 
 ! printscr
 keycode 107 = Tab
+
+! keycode 134 = Alt_R
+
+! keycode 62 = Alt_R NoSymbol Alt_R
+
+! the super key on lemur
+keycode 133 = Escape
+! fixing arrow keys on lemur
+keycode 114 = Down
+keycode 116 = Right
+keycode 62 = Up
